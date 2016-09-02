@@ -1,0 +1,3 @@
+CargoPlane: -id:4 -quantity of cargo on board:1 -distance:1600 -load Capacity:8000 -quantity of engines:2 - engines power:6000 -fuel cons.:600
+CargoPlane: -id:5 -quantity of cargo on board:5 -distance:3200 -load Capacity:9000 -quantity of engines:4 - engines power:12000 -fuel cons.:1200
+CargoPlane: -id:6 -quantity of cargo on board:4 -distance:2600 -load Capacity:25000 -quantity of engines:2 - engines power:20000 -fuel cons.:2000
