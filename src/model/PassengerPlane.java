@@ -97,7 +97,7 @@ public class PassengerPlane extends Plane {
 
         @Override
         public String toString(){
-                return "\r\n" + "PassengerPlane: -id:" + this.getId() + " -quantity of passengers on board:" + this.passengersOnBoard.size() +
+                return "PassengerPlane: -id:" + this.getId() + " -quantity of passengers on board:" + this.passengersOnBoard.size() +
                 " -distance:" + this.getDistance() + " -load Capacity:" + this.totalLoadCapacity + " -quantity of engines:" + engines.size() +
                 " - engines power:" + (engines.get(0).getPower())*engines.size() + " -fuel cons.:" + engines.get(0).getFuelConsumption()*engines.size();
         }

@@ -1,3 +1,5 @@
-CargoPlane: -id:4 -quantity of cargo on board:1 -distance:1600 -load Capacity:8000 -quantity of engines:2 - engines power:6000 -fuel cons.:600
-CargoPlane: -id:5 -quantity of cargo on board:5 -distance:3200 -load Capacity:9000 -quantity of engines:4 - engines power:12000 -fuel cons.:1200
-CargoPlane: -id:6 -quantity of cargo on board:4 -distance:2600 -load Capacity:25000 -quantity of engines:2 - engines power:20000 -fuel cons.:2000
+PassengerPlane: -id:1 -quantity of passengers on board:140 -distance:5200 -load Capacity:15300 -quantity of engines:4 - engines power:40000 -fuel cons.:4000
+CargoPlane: -id:2 -quantity of cargo on board:5 -distance:3200 -load Capacity:9000 -quantity of engines:4 - engines power:12000 -fuel cons.:1200
+PassengerPlane: -id:3 -quantity of passengers on board:201 -distance:5200 -load Capacity:28560 -quantity of engines:4 - engines power:40000 -fuel cons.:4000
+CargoPlane: -id:4 -quantity of cargo on board:7 -distance:2600 -load Capacity:20000 -quantity of engines:2 - engines power:20000 -fuel cons.:2000
+CargoPlane: -id:5 -quantity of cargo on board:3 -distance:3200 -load Capacity:10000 -quantity of engines:4 - engines power:12000 -fuel cons.:1200

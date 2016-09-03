@@ -48,14 +48,18 @@ public class MenuControllerNew {
                     menuAddPlaneLogic();
                     break;
                 case 2:
-                    System.out.println("Total load capacity:" + airCompanyDAO.getTotalLoadCapacity() +
+                    System.out.println("Total cargo capacity:" + airCompanyDAO.getTotalLoadCapacity() +
                             ", total passengers capacity:" + airCompanyDAO.getTotalPassengers());
                     break;
                 case 3:
                     menuFindPlaneLogic();
                     break;
                 case 4:
-                    System.out.println("List of planes sorted by distance:" + airCompanyDAO.sortByDistance());
+                    System.out.println("List of planes sorted by distance:\r\n" );
+                    List<Plane> planeList = airCompanyDAO.sortByDistance();
+                    for(Plane plane: planeList){
+                        System.out.println(plane);
+                    }
                     break;
                 default:
                     System.out.println("Please choose item from 1 to 4");
@@ -136,7 +140,10 @@ public class MenuControllerNew {
                 System.out.println("Please enter min and max digits accordingly");
         }while(menuFindPlaneChoiceMin > menuFindplaneChoiceMax);
         List<String> foundPlanes = airCompanyDAO.findPlane(menuFindPlaneChoiceMin, menuFindplaneChoiceMax);//airCompany.findPlane(menuFindPlaneChoiceMin, menuFindplaneChoiceMax);
-        System.out.println(foundPlanes);
+        System.out.println("\r\nSorted list of planes depending on distance:\r\n");
+        for(String s: foundPlanes) {
+            System.out.println(s);
+        }
 
     }
 

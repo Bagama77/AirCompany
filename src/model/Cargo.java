@@ -6,8 +6,7 @@ public class Cargo {
     public int id;
     private int weight;
     private int amount;
-    private String cargoIdDbFile = "E:\\AirCompany\\src\\DB\\cargoIdDb.txt";
-    private String cargoIdDbFile2 = "E:\\AirCompany\\src\\DB\\Id.txt";
+    private String cargoIdDbFile = "src\\DB\\cargoIdDb.txt";
     public Cargo(int weight, int amount) {
         this.weight = weight;
         this.amount = amount;
@@ -40,7 +39,7 @@ public class Cargo {
 //        System.out.println("CargoIdDB reader:" + temp);
         cargoIdReader.close();
         BufferedWriter cargoIdWriter = new BufferedWriter(new FileWriter(cargoIdDbFile));
-        if(temp.equalsIgnoreCase("") || temp == null) {//.equalsIgnoreCase(""))
+        if(temp.equalsIgnoreCase("") || temp == null) {
             cargoIdWriter.write("1");
             cargoIdWriter.flush();
             this.id = 1;

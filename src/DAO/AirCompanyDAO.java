@@ -13,10 +13,10 @@ import java.util.List;
 
 public class AirCompanyDAO {
 
-    private String airCompanyDBFile = "E:\\AirCompany\\src\\DB\\dbAirCompany.txt";
-    private String planesDBFile = "E:\\AirCompany\\src\\DB\\planesDb.txt";
-    private String passengersDBFile = "E:\\AirCompany\\src\\DB\\passengersDb.txt";
-    private String cargoDBFile = "E:\\AirCompany\\src\\DB\\cargoDb.txt";
+    private String airCompanyDBFile = "src\\DB\\dbAirCompany.txt";//E:\\AirCompany\\
+    private String planesDBFile = "src\\DB\\planesDb.txt";
+    private String passengersDBFile = "src\\DB\\passengersDb.txt";
+    private String cargoDBFile = "src\\DB\\cargoDb.txt";
 
     private BufferedReader airCompanyDBFileReader ;
     private BufferedReader planesDBFileReader ;
@@ -32,13 +32,17 @@ public class AirCompanyDAO {
         String[] array = new String[40];
         int capacity = 0;
         while ((temp = planesDBFileReader.readLine()) != null){
-            array = temp.split("-load Capacity:");
-//            array = temp.split(":");
-            System.out.println("Get total load capacity , split:" + Arrays.toString(array));
-            array = array[1].split(" ");
-            System.out.println("In string: " + array[0]);
-            capacity += Integer.parseInt(array[0]);
-            System.out.println("Capacity: " + capacity);
+            if(temp.contains("CargoPlane:")) {
+                array = temp.split("-load Capacity:");
+//              array = temp.split(":");
+//                System.out.println("Get total load capacity , split:" + Arrays.toString(array));
+                array = array[1].split(" ");
+//                System.out.println("In string: " + array[0]);
+                capacity += Integer.parseInt(array[0]);
+//                System.out.println("Capacity: " + capacity);
+            } else if(temp.contains("PassengerPlane:")){
+                continue;
+            } else break;
         }
         planesDBFileReader.close();
         return capacity;
@@ -48,19 +52,26 @@ public class AirCompanyDAO {
         planesDBFileReader = new BufferedReader(new FileReader(planesDBFile));
         int passengers = 0;
         String temp;
-        String[] array = new String[2];
+        String[] array = new String[40];
         while ((temp = planesDBFileReader.readLine()) != null){
-            array = temp.split("-quantity of passengers on board:");
-            array = array[1].split(" ");
-            System.out.println("In string: " + array[0]);
-            passengers += Integer.parseInt(array[0]);
-            System.out.println("passengers: " + passengers);
+            if(temp.contains("PassengerPlane:")) {
+//                System.out.println("find passenger plane!..");
+//                array = temp.split("-quantity of passengers on board:");
+                array = temp.split("-load Capacity:");
+
+                array = array[1].split(" ");
+//                System.out.println("In string: " + array[0]);
+                passengers += (Integer.parseInt(array[0]))/100;
+//                System.out.println("passengers: " + passengers);
+            } else if(temp.contains("CargoPlane:")){
+                continue;
+            } else break;
         }
         planesDBFileReader.close();
         return passengers;
     }
 
-    public String sortByDistance() throws IOException{
+    public List<Plane> sortByDistance() throws IOException{
         planesDBFileReader = new BufferedReader(new FileReader(planesDBFile));
         List<Plane> sortedByDistanceFleet = new ArrayList<Plane>();
         Plane tempPlane;
@@ -98,13 +109,13 @@ public class AirCompanyDAO {
                 tempPlane = new CargoPlane(id, loadCapacity, quantityOfEngines, enginesPower, distance, quantityOfCargoOnBoard);
             }
             sortedByDistanceFleet.add(tempPlane);
-            System.out.println("Added new Plane:" + tempPlane);
+//            System.out.println("Added new Plane:" + tempPlane);
 
         }
         Collections.sort(sortedByDistanceFleet);
 
         planesDBFileReader.close();
-        return sortedByDistanceFleet.toString();
+        return sortedByDistanceFleet;//.toString();
     }
 
     public List<String> findPlane (int minFuelConsumption, int maxFuelConsumption) throws IOException{
